@@ -1,7 +1,11 @@
 const input = document.getElementById("todo-input")
 const addBtn = document.getElementById("add-btn")
 const list = document.getElementById("todo-list")
-let todos = []
+let todos = JSON.parse(localStorage.getItem("todos")) || []
+
+function saveTodo(){
+    localStorage.setItem("todos",JSON.stringify(todos))
+}
 
 function editTodo(id){
     const todo = todos.find(t => t.id === id)
@@ -17,17 +21,20 @@ function editTodo(id){
     newText = newText.trim()
     todo.text = newText
     renderTodos()
+    saveTodo()
 }
 
 function toggleTodo(id){
     const todo = todos.find(t => t.id === id)
     todo.done = !todo.done
     renderTodos()
+    saveTodo()
 }
 
 function deleteTodo(id){
     todos = todos.filter(e => e.id !== id)
     renderTodos()
+    saveTodo()
 }
 
 function renderTodos(){
@@ -76,6 +83,9 @@ addBtn.addEventListener("click",()=>{
     todos.push(todo)
     input.value = ""
     renderTodos()
+    saveTodo()
 })
+
+renderTodos()
 
 
