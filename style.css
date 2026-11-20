@@ -10,7 +10,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: "Poppins", "sans-serif";
+    font-family: "Poppins", sans-serif;
 }
 
 .container{
@@ -50,7 +50,7 @@ h1{
 }
 
 #add-btn:hover{
-    background-color: #1951cb
+    background-color: #1951cb;
 }
 
 #todo-list{
