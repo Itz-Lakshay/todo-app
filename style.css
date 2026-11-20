@@ -49,6 +49,10 @@ h1{
     cursor: pointer;
 }
 
+#add-btn:hover{
+    background-color: #1951cb
+}
+
 #todo-list{
     display: flex;
     flex-direction: column;
@@ -67,9 +71,24 @@ h1{
     word-break:break-word;
     padding: 8px;
     margin-bottom: 5px;
+    align-items: center;
 }
 
 .done{
     text-decoration: line-through;
     color: #9ca3af;
+}
+
+#todo-list li button{
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #DC2626;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+#todo-list li button:hover{
+    background-color: #B91C1C;
 }

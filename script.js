@@ -1,8 +1,12 @@
 const input = document.getElementById("todo-input")
 const addBtn = document.getElementById("add-btn")
 const list = document.getElementById("todo-list")
-
 let todos = []
+
+function deleteTodo(id){
+    todos = todos.filter(e => e.id !== id)
+    renderTodos()
+}
 
 function renderTodos(){
     list.innerHTML = ""
@@ -13,6 +17,11 @@ function renderTodos(){
         span.textContent = e.text
         li.append(span)
         list.append(li)  
+
+        const delBtn = document.createElement("button")
+        delBtn.textContent = "Delete"
+        li.append(delBtn)
+        delBtn.addEventListener("click",() => deleteTodo(e.id))
     });
 }
 
