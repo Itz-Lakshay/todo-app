@@ -3,6 +3,12 @@ const addBtn = document.getElementById("add-btn")
 const list = document.getElementById("todo-list")
 let todos = []
 
+function toggleTodo(id){
+    const todo = todos.find(t => t.id === id)
+    todo.done = !todo.done
+    renderTodos()
+}
+
 function deleteTodo(id){
     todos = todos.filter(e => e.id !== id)
     renderTodos()
@@ -22,6 +28,11 @@ function renderTodos(){
         delBtn.textContent = "Delete"
         li.append(delBtn)
         delBtn.addEventListener("click",() => deleteTodo(e.id))
+
+        if(e.done){
+            span.classList.add("done")
+        }
+        span.addEventListener("click",()=>toggleTodo(e.id))
     });
 }
 

@@ -74,6 +74,10 @@ h1{
     align-items: center;
 }
 
+#todo-list li span{
+    cursor: pointer;
+}
+
 .done{
     text-decoration: line-through;
     color: #9ca3af;
