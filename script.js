@@ -3,6 +3,22 @@ const addBtn = document.getElementById("add-btn")
 const list = document.getElementById("todo-list")
 let todos = []
 
+function editTodo(id){
+    const todo = todos.find(t => t.id === id)
+    let newText = prompt("Enter Your Todo: ",todo.text)
+    if(newText === null){
+        return
+    }
+
+    else if(newText.trim() === ""){
+        return
+    }
+
+    newText = newText.trim()
+    todo.text = newText
+    renderTodos()
+}
+
 function toggleTodo(id){
     const todo = todos.find(t => t.id === id)
     todo.done = !todo.done
@@ -26,13 +42,22 @@ function renderTodos(){
 
         const delBtn = document.createElement("button")
         delBtn.textContent = "Delete"
-        li.append(delBtn)
         delBtn.addEventListener("click",() => deleteTodo(e.id))
 
         if(e.done){
             span.classList.add("done")
         }
         span.addEventListener("click",()=>toggleTodo(e.id))
+
+        const editBtn = document.createElement("button")
+        editBtn.textContent = "Edit"
+        
+        editBtn.addEventListener("click",()=> editTodo(e.id))
+
+        const btnGroup = document.createElement("div")
+        btnGroup.append(editBtn,delBtn)
+        li.append(btnGroup)
+
     });
 }
 
